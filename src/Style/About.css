@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.about-card-container, .About-cards-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+  justify-items: center;
+  align-items: stretch; /* CHANGED: Forces child cards to stretch to equal heights */
+  justify-content: center;
+  gap: 2.5rem; 
+  padding: 2rem max(1.5rem, 5vw); 
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto !important;    
+  box-sizing: border-box;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (min-width: 640px) {
+  .about-card-container, .About-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-card-container, .About-cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =======================================================
+   YOUR CARD STYLES (Fixed to match height exactly!)
+   ======================================================= */
+.about-card {
+  display: flex;         /* FIXED: Allows content to stretch nicely inside */
+  flex-direction: column;/* FIXED: Keeps layout stacking vertically */
+  height: 100%;          /* FIXED: Forces all cards to match the tallest one */
+  
+  flex: 1 1 320px; 
+  max-width: 360px;
+  width: 100%;
+  padding: 3rem 2rem;
+  margin: auto;
+  background: linear-gradient(145deg, #151515, #222222); 
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* FIXED: Keeps your texts spaced uniformly even if description lengths differ */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center; 
+}
+
+/* --- THE REST OF YOUR CARD STYLES (UNTOUCHED) --- */
+.about-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: #ff4500; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
+              0 0 20px rgba(255, 69, 0, 0.2);
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ebebeb, #d82405);
+  opacity: 0.7;
+}
+
+.about-image-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #ff4a4a; 
+  flex-shrink: 0; /* Prevents the circle photo from breaking its circle shape */
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-name {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.about-title {
+  font-size: 1rem;
+  color: #aaaaaa;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
